@@ -9,17 +9,18 @@
                 <th>Terrain</th>
                 <th>Population</th>
                 <th>Residents</th>
-                <th>Surface Water</th>
+                <th>Surface Water (km<sup>2</sup>)</th>
             </tr>
             <tr *ngFor="let planet of planets">
                 <td><a href="{{planet.url}}" target="_blank">{{planet.name}}</a></td>
-                <td>{{formatDisplay(planet.climate)}}</td>
-                <td>{{formatDisplay(planet.terrain)}}</td>
+                <td>{{formatDisplay(planet.climate.join(", "))}}</td>
+                <td>{{formatDisplay(planet.terrain.join(", "))}}</td>
                 <td>{{formatNumber(planet.population)}}</td>
                 <td>{{formatNumber(planet.residents)}}</td>
                 <td>{{formatNumber(planet.surface_water)}}</td>
             </tr>
         </table>
     </ng-template>
+
     <ng-template #errorMsg>There was an error when loading the planets.</ng-template>
 </div>

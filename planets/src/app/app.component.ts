@@ -8,14 +8,9 @@ import { AppService } from './app.service';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    private _title: string = 'Planets';
 
     constructor(private service: AppService) {
         this.service.loadPlanets();
-    }
-
-    get title(): string {
-        return this._title;
     }
 
     get planets(): Planet[] {
@@ -36,7 +31,7 @@ export class AppComponent {
 
     public formatNumber(val: string): string {
         if (val === Planet.unknown) {
-            return this.formatDisplay(val);
+            return "?";
         }
 
         if (val.length <= 3) {

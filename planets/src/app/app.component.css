@@ -1,4 +1,6 @@
-.planet-table th, .planet-table td {
+.planet-table, .planet-table th, .planet-table td {
     border: 1px solid grey;
+}
+.planet-table th, .planet-table td {
     padding: 5px;
 }

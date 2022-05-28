@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
 import { Planet } from "./app.domain";
 import { AppRepository } from "./app.repository";
 
@@ -43,13 +42,21 @@ export class AppService {
             let planet: Planet = new Planet();
             planet.name = it.name;
             planet.url = it.url;
-            planet.climate = it.climate;
-            planet.terrain = it.terrain;
+            planet.climate = this.generateValueList(it.climate);
+            planet.terrain = this.generateValueList(it.terrain);
             planet.population = it.population;
             planet.residents = String(it.residents.length);
             planet.surface_water = this.generateSurfaceWater(it.diameter, it.surface_water);
             this._planets.push(planet);
         });
+    }
+
+    private generateValueList(val: string): string[] {
+        if (val === Planet.unknown) {
+            return [val];
+        }
+        let splitVal: string[] = val.split(", ");
+        return splitVal.map ((it: any) => it.charAt(0).toUpperCase() + it.slice(1).toLowerCase());
     }
 
     /* Surface area (in km2) covered by water
@@ -62,8 +69,9 @@ export class AppService {
         if (diameter === Planet.unknown || water === Planet.unknown) {
             return Planet.unknown;
         }
-        let surfaceArea: number = 4 * Math.PI * Math.pow(Number(diameter) / 2, 2);
+        let planetRadius: number = Number(diameter) / 2;
+        let surfaceArea: number = 4 * Math.PI * Math.pow(planetRadius, 2);
         let surfaceWaterPercent: number = Number(water) / 100;
-        return String(Math.floor(surfaceArea * surfaceWaterPercent));
+        return String(Math.round(surfaceArea * surfaceWaterPercent));
     };
 }

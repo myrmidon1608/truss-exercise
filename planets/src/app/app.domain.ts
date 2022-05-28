@@ -3,9 +3,9 @@ export class Planet {
 
     name!: string;
     url!: string;
-    climate!: string;
+    climate!: string[];
     residents!: string;
-    terrain!: string;
+    terrain!: string[];
     population!: string;
     surface_water!: string;
 

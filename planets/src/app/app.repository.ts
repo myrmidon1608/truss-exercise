@@ -7,6 +7,7 @@ export class AppRepository {
     private static apiUrl: string = "https://swapi.dev/api/planets/";
 
     /**
+    https://swapi.dev/documentation
     {
         "climate": "Arid",
         "diameter": "10465", // in km
