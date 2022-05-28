@@ -14,6 +14,7 @@ ng serve
 ```
 
 * Compile production build
+
 Production files are located under "planets\dist\planets".
 ```
 cd planets
